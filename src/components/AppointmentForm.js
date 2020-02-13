@@ -59,7 +59,17 @@ const AppointmentForm = ({ addAppointment }) => {   // Destructuración del Prop
         /** Crea la cita */
         addAppointment( stateAppointment );
 
-        /** Resetea campos del formulario */
+        /** Resetea campos del formulario es decir 
+         * Actualiza State: Cita 
+        */
+        setAppointment({
+            petName: '',
+            ownerName: '',
+            medicalDepartureDate: '',
+            medicalDepartureTime: '',
+            symptoms: ''
+        });
+        
     }
 
     return (

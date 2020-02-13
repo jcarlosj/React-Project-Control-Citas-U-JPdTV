@@ -1,5 +1,7 @@
 import React, { Fragment, useState } from 'react';
 
+import uuid from 'uuid/v4';
+
 const AppointmentForm = () => {
 
     /** State: Cita */
@@ -45,10 +47,14 @@ const AppointmentForm = () => {
             return;
         }
         
-        console.log( 'Cita', stateAppointment );
         setError( false );       // Actualiza el State: Error
 
-        /** Asigna un ID */
+        /** Asigna un ID:
+         *  Simula la asignación de id que hace una base de datos al guardar un registro usando la libreria 'uuid' o 'shortid'. 
+         *  Generalmente es la BD la que hace esto.
+         */
+        stateAppointment .id = uuid();      // Agrega nueva propiedad 'id' con un valor aleatorio
+        console.log( 'Cita', stateAppointment );
 
         /** Crea la cita */
 

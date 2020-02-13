@@ -9,6 +9,12 @@ function App() {
     /** Agrega solicitud a citas pendientes */
     const addAppointment = ( appointment ) => {
         console .log( 'App', appointment );
+
+        /** Establece cambios en el State es decir. Asigna Cita solicitada a listado de Citas Pendientes */
+        setPendingAppointments([
+            ...statusPendingAppointments,   // Spread
+            appointment                     // Enviado por el Componente Hijo
+        ]);
     }
 
   return (

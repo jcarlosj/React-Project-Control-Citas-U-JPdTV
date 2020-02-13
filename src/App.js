@@ -1,14 +1,25 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import AppointmentForm from './components/AppointmentForm';
 
 function App() {
+
+    /** State: Citas Pendientes */
+    const [ statusPendingAppointments, setPendingAppointments ] = useState([]);
+
+    /** Agrega solicitud a citas pendientes */
+    const addAppointment = ( appointment ) => {
+        console .log( 'App', appointment );
+    }
+
   return (
     <Fragment>
         <h1>Administrar citas</h1>
         <div className="container">
             <div className="row">
                 <div className="one-half column">
-                    <AppointmentForm />
+                    <AppointmentForm 
+                        addAppointment={ addAppointment }       // Usamos Props para pasar la funcion al componente y establecer una comunicación con el padre 'App'
+                    />
                 </div>
                 <div className="one-half column">
                     2

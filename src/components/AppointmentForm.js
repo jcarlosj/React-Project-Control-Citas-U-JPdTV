@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react';
 
 import uuid from 'uuid/v4';
 
-const AppointmentForm = () => {
+const AppointmentForm = ({ addAppointment }) => {   // Destructuración del Props pasado como argumento. Equivale a props .addApointment
 
     /** State: Cita */
     const [ stateAppointment, setAppointment ] = useState({
@@ -54,9 +54,10 @@ const AppointmentForm = () => {
          *  Generalmente es la BD la que hace esto.
          */
         stateAppointment .id = uuid();      // Agrega nueva propiedad 'id' con un valor aleatorio
-        console.log( 'Cita', stateAppointment );
+        console.log( 'AppointmentForm', stateAppointment );
 
         /** Crea la cita */
+        addAppointment( stateAppointment );
 
         /** Resetea campos del formulario */
     }

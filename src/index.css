@@ -23,3 +23,13 @@ h3 {
     text-transform: uppercase;
 }
 
+.alert-error {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    border-radius: .25rem;
+    color: #721c24;
+    font-size: 2rem;
+    padding: 1rem;
+    text-align: center;
+} 
+

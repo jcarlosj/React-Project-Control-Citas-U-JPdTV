@@ -100,22 +100,29 @@ const AppointmentForm = ({ addAppointment }) => {   // Destructuración del Prop
                     onChange={ handleChange }
                     value={ ownerName }
                 />
-                <label>Fecha de Alta</label>
-                <input 
-                    name="medicalDepartureDate"
-                    type="date"
-                    className="u-full-width"
-                    onChange={ handleChange }
-                    value={ medicalDepartureDate }
-                />
-                <label>Hora de Alta</label>
-                <input 
-                    name="medicalDepartureTime"
-                    type="time"
-                    className="u-full-width"
-                    onChange={ handleChange }
-                    value={ medicalDepartureTime }
-                />
+                <div class="row">
+                    <div class="six columns">
+                        <label>Fecha</label>
+                        <input 
+                            name="medicalDepartureDate"
+                            type="date"
+                            className="u-full-width"
+                            onChange={ handleChange }
+                            value={ medicalDepartureDate }
+                        />
+                    </div>
+                    <div class="six columns">
+                        <label>Hora</label>
+                        <input 
+                            name="medicalDepartureTime"
+                            type="time"
+                            className="u-full-width"
+                            onChange={ handleChange }
+                            value={ medicalDepartureTime }
+                        />
+                    </div>
+                </div>
+                
                 <label>Síntomas</label>
                 <textarea
                     name="symptoms"

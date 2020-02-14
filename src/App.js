@@ -1,5 +1,8 @@
 import React, { Fragment, useState } from 'react';
+
+/** Components */
 import AppointmentForm from './components/AppointmentForm';
+import Appointment from './components/Appointment';
 
 function App() {
 
@@ -28,7 +31,12 @@ function App() {
                     />
                 </div>
                 <div className="one-half column">
-                    2
+                    <h3>Listado citas</h3>
+                    {   statusPendingAppointments .map( appointment => (        // Return Implicito usando Parentesis
+                        <Appointment 
+                            appointment={ appointment }
+                        />
+                    ))}
                 </div>
             </div>
         </div>

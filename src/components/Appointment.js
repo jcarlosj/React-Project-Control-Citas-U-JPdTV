@@ -1,8 +1,9 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 
 const Appointment = ({ appointment, deleteAppointmentAttended }) => (     // Return Implicito & Destructuración del Props pasado como argumento. Equivale a props .apointment
     <Fragment>
-        <table class="u-full-width">
+        <table className="u-full-width">
             <thead>
                 <tr>
                     <th>Mascota</th>
@@ -34,5 +35,11 @@ const Appointment = ({ appointment, deleteAppointmentAttended }) => (     // Ret
         </table>
     </Fragment>    
 );
+
+/** Verificación de Tipos usando PropTypes */
+Appointment .propTypes = {
+    appointment: PropTypes .object .isRequired,
+    deleteAppointmentAttended: PropTypes .func .isRequired
+}
 
 export default Appointment;

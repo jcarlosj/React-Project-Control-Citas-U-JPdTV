@@ -6,7 +6,7 @@ import Appointment from './components/Appointment';
 
 function App() {
 
-    let appointmentsLocalStorage = JSON .parse( localStorage .getItem( 'appoinments' ) );   // Retorna null si no hay una cadena registrada
+    let appointmentsLocalStorage = JSON .parse( localStorage .getItem( 'appointments' ) );   // Retorna null si no hay una cadena registrada
     /** Valida si NO hay citas en el LocalStorage */
     if( ! appointmentsLocalStorage ) {
         appointmentsLocalStorage = [];      // Inicializa Array Vacio
@@ -24,6 +24,7 @@ function App() {
      * NOTA:* Si estás familiarizado con el ciclo de vida de las clases de React y sus métodos, el Hook useEffect equivale a componentDidMount, componentDidUpdate y componentWillUnmount combinados.
     */
     useEffect( () => {                      // Siempre se define con un CallBack de Arrow Function
+        let appointmentsLocalStorage = JSON .parse( localStorage .getItem( 'appointments' ) );   // Retorna null si no hay una cadena registrada
         console .log( 'Listo' );     
 
         /** Valida SI hay citas en el LocalStorage */

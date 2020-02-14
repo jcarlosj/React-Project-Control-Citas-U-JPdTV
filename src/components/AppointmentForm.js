@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from 'react';
+import PropTypes from 'prop-types';
 
 import uuid from 'uuid/v4';
 
@@ -100,8 +101,8 @@ const AppointmentForm = ({ addAppointment }) => {   // Destructuración del Prop
                     onChange={ handleChange }
                     value={ ownerName }
                 />
-                <div class="row">
-                    <div class="six columns">
+                <div className="row">
+                    <div className="six columns">
                         <label>Fecha</label>
                         <input 
                             name="medicalDepartureDate"
@@ -111,7 +112,7 @@ const AppointmentForm = ({ addAppointment }) => {   // Destructuración del Prop
                             value={ medicalDepartureDate }
                         />
                     </div>
-                    <div class="six columns">
+                    <div className="six columns">
                         <label>Hora</label>
                         <input 
                             name="medicalDepartureTime"
@@ -138,6 +139,11 @@ const AppointmentForm = ({ addAppointment }) => {   // Destructuración del Prop
             </form>
         </Fragment>
     );
+}
+
+/** Verificación de Tipos usando PropTypes */
+AppointmentForm .propTypes = {
+    addAppointment: PropTypes .func .isRequired     // props pasado al componente AppointmentForm
 }
 
 export default AppointmentForm;

@@ -20,6 +20,18 @@ function App() {
         ]);
     }
 
+    /** Elimina citas atendidas por su ID */
+    const deleteAppointmentAttended = ( id ) => {
+        console .log( 'Atendida cita con ID', id );
+
+        /** Obtiene todas las citas que faltan por atender, excluyendo la cita atendida (eliminada) */
+        const pendingAppointments = statusPendingAppointments .filter( appointment => appointment .id !== id );
+
+        /** Establece cambios en el State es decir. Asigna Citas Pendientes */
+        setPendingAppointments( pendingAppointments );
+
+    }
+
   return (
     <Fragment>
         <h1>Administrar citas</h1>
@@ -34,7 +46,9 @@ function App() {
                     <h3>Listado citas</h3>
                     {   statusPendingAppointments .map( appointment => (        // Return Implicito usando Parentesis
                         <Appointment 
+                            key={ appointment .id }
                             appointment={ appointment }
+                            deleteAppointmentAttended={ deleteAppointmentAttended }
                         />
                     ))}
                 </div>

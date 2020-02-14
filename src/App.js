@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 
 /** Components */
 import AppointmentForm from './components/AppointmentForm';
@@ -8,6 +8,20 @@ function App() {
 
     /** State: Citas Pendientes */
     const [ statusPendingAppointments, setPendingAppointments ] = useState([]);
+
+    /** useEffect() se ejecuta y realiza algunas operaciones
+     *   - Cuando el Componente a Cargado completamente (como el window.onload de JavaScript o el document.ready de jQuery).
+     *   - Cuando algo cambia en el componente.
+     *   - Si deseamos que se ejecute una sola vez debemos pasar como segundo parámetro un Array vacío, de lo contrario se ejecutará ciclicamente.
+     *   - En dicho Array se van a colocar las dependencias que le hará seguimiento y que cambiarán para que el useEffect se ejecute.
+     * 
+     * NOTA:* Si estás familiarizado con el ciclo de vida de las clases de React y sus métodos, el Hook useEffect equivale a componentDidMount, componentDidUpdate y componentWillUnmount combinados.
+    */
+    useEffect( () => {                      // Siempre se define con un CallBack de Arrow Function
+        console .log( 'Listo' );     
+
+        
+    }, [ statusPendingAppointments ] );     // Array de dependencias que cambian
 
     /** Agrega solicitud a citas pendientes */
     const addAppointment = ( appointment ) => {

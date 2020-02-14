@@ -6,8 +6,14 @@ import Appointment from './components/Appointment';
 
 function App() {
 
+    let appointmentsLocalStorage = JSON .parse( localStorage .getItem( 'appoinments' ) );   // Retorna null si no hay una cadena registrada
+    /** Valida si NO hay citas en el LocalStorage */
+    if( ! appointmentsLocalStorage ) {
+        appointmentsLocalStorage = [];      // Inicializa Array Vacio
+    }
+
     /** State: Citas Pendientes */
-    const [ statusPendingAppointments, setPendingAppointments ] = useState([]);
+    const [ statusPendingAppointments, setPendingAppointments ] = useState( appointmentsLocalStorage );
 
     /** useEffect() se ejecuta y realiza algunas operaciones
      *   - Cuando el Componente a Cargado completamente (como el window.onload de JavaScript o el document.ready de jQuery).
@@ -20,6 +26,13 @@ function App() {
     useEffect( () => {                      // Siempre se define con un CallBack de Arrow Function
         console .log( 'Listo' );     
 
+        /** Valida SI hay citas en el LocalStorage */
+        if( appointmentsLocalStorage ) {
+            localStorage .setItem( 'appointments', JSON .stringify( statusPendingAppointments ) );
+        }
+        else {
+            localStorage .setItem( 'appointments', JSON .stringify( [] ) );
+        }
         
     }, [ statusPendingAppointments ] );     // Array de dependencias que cambian
 

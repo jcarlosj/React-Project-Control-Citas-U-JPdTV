@@ -5,29 +5,25 @@ import '@testing-library/jest-dom/extend-expect';       //  Para dar soporte a t
 /** Componente a Testear */
 import AppointmentForm from '../components/AppointmentForm';
 
-test('<AppointmentForm /> Debe contener en el encabezado y el boton de submit', () => {
+test('<AppointmentForm /> Verifica etiqueta y contenido de encabezado y boton enviar', () => {
     // const wrapper = render( <AppointmentForm /> );
     // wrapper .debug();
 
     render( <AppointmentForm /> );    //  Monta Componente
 
+    const
+        textTitle = screen .getByText( 'Solicitud de cita' ),
+        title = screen .getByTestId( 'title' ),
+        btnSubmit = screen .getByTestId( 'btn-submit' );
+
     /** Heading */
-    expect( 
-        screen .getByText( 'Solicitud de cita' )    //  Obtiene el elemento con el texto indicado
-    ) .toBeInTheDocument();                         //  Verifica si el elemento esta en el DOM
-    expect(
-        screen .getByTestId( 'title' ) .tagName     //  Obtiene tipo de elemento de acuerdo con un atributo personalizado
-    ) .toBe( 'H3' );                                //  Verifica la etiqueta del elemento sea un H3 
-    expect(
-        screen .getByTestId( 'title' ) .tagName     //  Obtiene tipo de elemento de acuerdo con un atributo personalizado
-    ) .not .toBe( 'H1' );                           //  Verifica la etiqueta del elemento NO sea un H1
-    expect(
-        screen .getByTestId( 'title' ) .textContent //  Obtiene el contenido del elemento de acuerdo con un atributo personalizado
-    ) .toBe( 'Solicitud de cita' );                 //  Verifica la etiqueta posea el texto esperado
+    expect( textTitle ) .toBeInTheDocument();                   //  Verifica si el elemento esta en el DOM
+    expect( title .tagName ) .toBe( 'H3' );                     //  Verifica la etiqueta del elemento sea un H3 
+    expect( title .tagName ) .not .toBe( 'H1' );                //  Verifica la etiqueta del elemento NO sea un H1
+    expect( title .textContent ) .toBe( 'Solicitud de cita' );  //  Verifica la etiqueta posea el texto esperado
 
     /** Submit Button */
-    const buttonEl = screen .getByTestId( 'btn-submit' );
-    expect( buttonEl .tagName ) .toBe( 'BUTTON' );
-    expect( buttonEl .textContent ). toBe( 'Solicitar' );
+    expect( btnSubmit .tagName ) .toBe( 'BUTTON' );             //  Verifica la etiqueta del elemento sea un BUTTON
+    expect( btnSubmit .textContent ). toBe( 'Solicitar' );      //  Verifica la etiqueta posea el texto esperado
 
 });

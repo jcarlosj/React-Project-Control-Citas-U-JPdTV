@@ -135,6 +135,7 @@ const AppointmentForm = ({ addAppointment }) => {   // Destructuración del Prop
                 <button
                     type="submit"
                     className="u-full-width button-primary"
+                    data-testid="btn-submit"
                 >Solicitar</button>
             </form>
         </Fragment>

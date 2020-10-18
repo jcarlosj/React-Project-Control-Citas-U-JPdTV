@@ -5,7 +5,7 @@ import '@testing-library/jest-dom/extend-expect';       //  Para dar soporte a t
 /** Componente a Testear */
 import AppointmentForm from '../components/AppointmentForm';
 
-test('<AppointmentForm /> Debe obtener elemento con el texto "Solicitud de cita" ', () => {
+test('<AppointmentForm /> Debe contener en el encabezado', () => {
     // const wrapper = render( <AppointmentForm /> );
     // wrapper .debug();
 
@@ -15,7 +15,6 @@ test('<AppointmentForm /> Debe obtener elemento con el texto "Solicitud de cita"
     expect( 
         screen .getByText( 'Solicitud de cita' )    //  Obtiene el elemento con el texto indicado
     ) .toBeInTheDocument();                         //  Verifica si el elemento esta en el DOM
-
     expect(
         screen .getByTestId( 'title' ) .tagName     //  Obtiene tipo de elemento de acuerdo con un atributo personalizado
     ) .toBe( 'H3' );                                //  Verifica la etiqueta del elemento sea un H3 
@@ -25,5 +24,10 @@ test('<AppointmentForm /> Debe obtener elemento con el texto "Solicitud de cita"
     expect(
         screen .getByTestId( 'title' ) .textContent //  Obtiene el contenido del elemento de acuerdo con un atributo personalizado
     ) .toBe( 'Solicitud de cita' );                 //  Verifica la etiqueta posea el texto esperado
+
+    /** Submit Button */
+    const buttonEl = screen .getByTestId( 'btn-submit' );
+    expect( buttonEl .tagName ) .toBe( 'BUTTON' );
+    expect( buttonEl .textContent ). toBe( 'Solicitar' );
 
 });

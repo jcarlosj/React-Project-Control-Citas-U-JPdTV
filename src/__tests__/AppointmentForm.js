@@ -5,7 +5,7 @@ import '@testing-library/jest-dom/extend-expect';       //  Para dar soporte a t
 /** Componente a Testear */
 import AppointmentForm from '../components/AppointmentForm';
 
-test('<AppointmentForm /> Debe contener en el encabezado', () => {
+test('<AppointmentForm /> Debe contener en el encabezado y el boton de submit', () => {
     // const wrapper = render( <AppointmentForm /> );
     // wrapper .debug();
 

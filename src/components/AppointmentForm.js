@@ -143,7 +143,7 @@ const AppointmentForm = ({ addAppointment }) => {   // Destructuración del Prop
 
 /** Verificación de Tipos usando PropTypes */
 AppointmentForm .propTypes = {
-    addAppointment: PropTypes .func .isRequired     // props pasado al componente AppointmentForm
+    addAppointment: PropTypes .func     // props pasado al componente AppointmentForm
 }
 
 export default AppointmentForm;

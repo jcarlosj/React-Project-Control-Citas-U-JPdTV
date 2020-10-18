@@ -1,0 +1,1 @@
+test( 'AppComponent', () => {});    //   PASS  src/__tests__/App.js

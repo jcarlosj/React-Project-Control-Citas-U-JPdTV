@@ -75,7 +75,7 @@ const AppointmentForm = ({ addAppointment }) => {   // Destructuración del Prop
 
     return (
         <Fragment>
-            <h3>Solicitud de cita</h3>
+            <h3 data-testid="title">Solicitud de cita</h3>
             { stateError 
                 ?   <p className="alert-error">Todos los campos son obligatorios.</p>
                 :   null            }

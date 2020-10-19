@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, cleanup } from '@testing-library/react';
+import { render, screen, cleanup, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';       //  Para dar soporte a toBeInTheDocument()
 
 /** Componente a Testear */
@@ -9,7 +9,7 @@ import AppointmentForm from '../components/AppointmentForm';
 const addAppointment = jest .fn();
 
 /** Funciones Jest  */
-afterEach( cleanup );       //   Desmonta árboles de React que se montaron con render despues de la finalización de cada test      
+afterEach( cleanup );       //   Desmonta árboles de React que se montaron con render despues de la finalización de cada test (En las ultimas versiones no es necesario)     
 
 test('<AppointmentForm /> Verifica etiqueta y contenido de encabezado y boton enviar', () => {
     // const wrapper = render( <AppointmentForm /> );
@@ -47,5 +47,13 @@ test( '<AppointmentForm /> Valida el formulario', () => {
         />
     ); 
 
+    const btnSubmit = screen .getByTestId( 'btn-submit' );
+    fireEvent .click( btnSubmit );      //  Envia un evento al elemento (Hacemos clic)
+
+    /** Assert */
+    const alertError = screen .getByTestId( 'alert-error' );
+    expect( alertError ).toBeInTheDocument();                   //  Verifica si el elemento esta en el DOM
+    expect( alertError .textContent ) .toBe( 'Todos los campos son obligatorios.' );
+    expect( alertError .tagName ) .toBe( 'P' );
 
 });

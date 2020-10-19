@@ -48,12 +48,42 @@ test( '<AppointmentForm /> Valida el formulario', () => {
     ); 
 
     const btnSubmit = screen .getByTestId( 'btn-submit' );
-    fireEvent .click( btnSubmit );      //  Envia un evento al elemento (Hacemos clic)
+    fireEvent .click( btnSubmit );      //  Envia un evento al elemento (Hacemos clic - Forma Anterior)
 
     /** Assert */
     const alertError = screen .getByTestId( 'alert-error' );
     expect( alertError ).toBeInTheDocument();                   //  Verifica si el elemento esta en el DOM
     expect( alertError .textContent ) .toBe( 'Todos los campos son obligatorios.' );
     expect( alertError .tagName ) .toBe( 'P' );
+
+});
+
+
+test( '<AppointmentForm /> Valida el formulario', () => {
+    /** Monta el Componente con su funcionalidad asociada */
+    render( 
+        <AppointmentForm 
+            addAppointment={ addAppointment }       // Usamos Props para pasar la funcion al componente y establecer una comunicación con el padre 'App'
+        />
+    ); 
+
+    //  En este formulario estamos usando un onChange por eso fireEvent .change
+    fireEvent .change(
+        screen .getByTestId( 'pet-name' ), 
+        {
+            target: { value: 'Rex' }
+        }
+    );   
+    
+    fireEvent .change(
+        screen .getByTestId( 'owner-name' ), 
+        {
+            target: { value: 'Juan Carlos' }
+        }
+    );
+
+    const btnSubmit = screen .getByTestId( 'btn-submit' );
+    fireEvent .click( btnSubmit );      //  Envia un evento al elemento (Hacemos clic - Forma Anterior)
+
 
 });

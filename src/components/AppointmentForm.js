@@ -35,6 +35,8 @@ const AppointmentForm = ({ addAppointment }) => {   // Destructuración del Prop
     const submitAppointment = ( event ) => {
         event .preventDefault();        // Evita el envio por el QueryString por el metodo GET
 
+        console .debug( 'Testing', stateAppointment );
+
         /** Valida campos del formulario*/
         if( 
             petName .trim() === '' || 
@@ -85,6 +87,7 @@ const AppointmentForm = ({ addAppointment }) => {   // Destructuración del Prop
             >
                 <label>Nombre Mascota</label>
                 <input 
+                    data-testid="pet-name"
                     name="petName"
                     type="text"
                     placeholder="Ej: Rex"
@@ -94,6 +97,7 @@ const AppointmentForm = ({ addAppointment }) => {   // Destructuración del Prop
                 />
                 <label>Nombre Propietario</label>
                 <input 
+                    data-testid="owner-name"
                     name="ownerName"
                     type="text"
                     placeholder="Ej: Juan Carlos Jiménez Gutiérrez"

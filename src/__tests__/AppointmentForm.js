@@ -80,4 +80,9 @@ test( '<AppointmentForm /> Valida llenan datos del formulario', () => {
     const btnSubmit = screen .getByTestId( 'btn-submit' );
     userEvent .click( btnSubmit );      //  Envia un evento al elemento (Hacemos clic - Forma Anterior)
 
+    /** Alert-Error */
+    expect(
+        screen .queryByTestId( 'alert-error', 'does-not-exist' )        //  No encuentre el elemento. Se usa queryByTestId cuando no hay certeza de encontrar el elemento y evitar el error con getByTestId
+    ) .toBeInTheDocument();                                             //  En este caso no se debe negar usando not, si no agregando 'does-not-exist' a queryByTestId
+
 });

@@ -9,9 +9,6 @@ import AppointmentForm from '../components/AppointmentForm';
 /** Jest Spy Function */
 const addAppointment = jest .fn();
 
-/** Funciones Jest  */
-afterEach( cleanup );       //   Desmonta árboles de React que se montaron con render despues de la finalización de cada test (En las ultimas versiones no es necesario)     
-
 test('<AppointmentForm /> Verifica etiqueta y contenido de encabezado y boton enviar', () => {
     // const wrapper = render( <AppointmentForm /> );
     // wrapper .debug();
@@ -72,8 +69,8 @@ test( '<AppointmentForm /> Valida llenan datos del formulario', () => {
     /** Llena el formulario */
     userEvent .type( screen .getByTestId( 'pet-name' ), 'Rex' );
     userEvent .type( screen .getByTestId( 'owner-name' ), 'Juan Carlos' );
-    userEvent .type( screen .getByTestId( 'medical-departure-date' ), '2021-09-10' );
-    userEvent .type( screen .getByTestId( 'medical-departure-time' ), '9:30' );
+    userEvent .type( screen .getByTestId( 'date' ), '2021-09-10' );
+    userEvent .type( screen .getByTestId( 'hour' ), '09:10' );
     userEvent .type( screen .getByTestId( 'symptoms' ), 'Duerme como un angelito' );
 
 
@@ -82,7 +79,11 @@ test( '<AppointmentForm /> Valida llenan datos del formulario', () => {
 
     /** Alert-Error */
     expect(
-        screen .queryByTestId( 'alert-error', 'does-not-exist' )        //  No encuentre el elemento. Se usa queryByTestId cuando no hay certeza de encontrar el elemento y evitar el error con getByTestId
-    ) .toBeInTheDocument();                                             //  En este caso no se debe negar usando not, si no agregando 'does-not-exist' a queryByTestId
+        screen .queryByTestId( 'alert-error' )        //  No encuentre el elemento. Se usa queryByTestId cuando no hay certeza de encontrar el elemento y evitar el error con getByTestId
+    ) .not.toBeInTheDocument();                                             //  En este caso no se debe negar usando not, si no agregando 'does-not-exist' a queryByTestId
+
+    /** Function execute */
+    expect( addAppointment ) .toHaveBeenCalled();           //  Verificar que la funcion 'addAppointment' fue llamada
+    expect( addAppointment ) .toHaveBeenCalledTimes( 1 );   //  Verificar que la funcion 'addAppointment' fue llamada una sola vez
 
 });

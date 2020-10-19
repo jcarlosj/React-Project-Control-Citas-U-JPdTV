@@ -7,6 +7,7 @@ const AppointmentForm = ({ addAppointment }) => {   // Destructuración del Prop
 
     /** State: Cita */
     const [ stateAppointment, setAppointment ] = useState({
+        id: null,
         petName: '',
         ownerName: '',
         medicalDepartureDate: '',
@@ -19,7 +20,7 @@ const AppointmentForm = ({ addAppointment }) => {   // Destructuración del Prop
 
     /** Manejador de Cambios el State: Cita (Cuando el usuario escribe en un campo del formulario) */
     const handleChange = ( event ) => {
-        console.log( 'Escribiendo en', event .target .name );
+        //console.log( 'Escribiendo en', event .target .name );
 
         /** Actualiza State: Cita */
         setAppointment({
@@ -56,7 +57,8 @@ const AppointmentForm = ({ addAppointment }) => {   // Destructuración del Prop
          *  Simula la asignación de id que hace una base de datos al guardar un registro usando la libreria 'uuid' o 'shortid'. 
          *  Generalmente es la BD la que hace esto.
          */
-        stateAppointment .id = uuid();      // Agrega nueva propiedad 'id' con un valor aleatorio
+        stateAppointment .id = uuid()      // Agrega nueva propiedad 'id' con un valor aleatorio
+        
         console .debug( 'Testing', stateAppointment );
 
         /** Crea la cita */
@@ -66,6 +68,7 @@ const AppointmentForm = ({ addAppointment }) => {   // Destructuración del Prop
          * Actualiza State: Cita 
         */
         setAppointment({
+            id: null,
             petName: '',
             ownerName: '',
             medicalDepartureDate: '',
@@ -109,7 +112,7 @@ const AppointmentForm = ({ addAppointment }) => {   // Destructuración del Prop
                     <div className="six columns">
                         <label>Fecha</label>
                         <input 
-                            data-testid="medical-departure-date"
+                            data-testid="date"
                             name="medicalDepartureDate"
                             type="date"
                             className="u-full-width"
@@ -120,7 +123,7 @@ const AppointmentForm = ({ addAppointment }) => {   // Destructuración del Prop
                     <div className="six columns">
                         <label>Hora</label>
                         <input 
-                            data-testid="medical-departure-time"
+                            data-testid="hour"
                             name="medicalDepartureTime"
                             type="time"
                             className="u-full-width"

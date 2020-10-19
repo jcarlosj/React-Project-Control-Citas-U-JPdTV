@@ -57,7 +57,7 @@ const AppointmentForm = ({ addAppointment }) => {   // Destructuración del Prop
          *  Generalmente es la BD la que hace esto.
          */
         stateAppointment .id = uuid();      // Agrega nueva propiedad 'id' con un valor aleatorio
-        console.log( 'AppointmentForm', stateAppointment );
+        console .debug( 'Testing', stateAppointment );
 
         /** Crea la cita */
         addAppointment( stateAppointment );
@@ -109,6 +109,7 @@ const AppointmentForm = ({ addAppointment }) => {   // Destructuración del Prop
                     <div className="six columns">
                         <label>Fecha</label>
                         <input 
+                            data-testid="medical-departure-date"
                             name="medicalDepartureDate"
                             type="date"
                             className="u-full-width"
@@ -119,6 +120,7 @@ const AppointmentForm = ({ addAppointment }) => {   // Destructuración del Prop
                     <div className="six columns">
                         <label>Hora</label>
                         <input 
+                            data-testid="medical-departure-time"
                             name="medicalDepartureTime"
                             type="time"
                             className="u-full-width"
@@ -130,6 +132,7 @@ const AppointmentForm = ({ addAppointment }) => {   // Destructuración del Prop
                 
                 <label>Síntomas</label>
                 <textarea
+                    data-testid="symptoms"
                     name="symptoms"
                     className="u-full-width"
                     placeholder="Haga una descripción detallada de toda la sintomatología de su mascota"

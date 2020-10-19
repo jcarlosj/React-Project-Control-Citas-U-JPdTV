@@ -1,6 +1,7 @@
 import React from 'react';
-import { render, screen, cleanup, fireEvent } from '@testing-library/react';
+import { render, screen, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';       //  Para dar soporte a toBeInTheDocument()
+import userEvent from '@testing-library/user-event';
 
 /** Componente a Testear */
 import AppointmentForm from '../components/AppointmentForm';
@@ -48,7 +49,7 @@ test( '<AppointmentForm /> Valida el formulario', () => {
     ); 
 
     const btnSubmit = screen .getByTestId( 'btn-submit' );
-    fireEvent .click( btnSubmit );      //  Envia un evento al elemento (Hacemos clic - Forma Anterior)
+    userEvent .click( btnSubmit );      //  Envia un evento al elemento (Hacemos clic - Forma Anterior)
 
     /** Assert */
     const alertError = screen .getByTestId( 'alert-error' );
@@ -59,7 +60,7 @@ test( '<AppointmentForm /> Valida el formulario', () => {
 });
 
 
-test( '<AppointmentForm /> Valida el formulario', () => {
+test( '<AppointmentForm /> Valida llenan datos del formulario', () => {
     /** Monta el Componente con su funcionalidad asociada */
     render( 
         <AppointmentForm 
@@ -67,23 +68,16 @@ test( '<AppointmentForm /> Valida el formulario', () => {
         />
     ); 
 
-    //  En este formulario estamos usando un onChange por eso fireEvent .change
-    fireEvent .change(
-        screen .getByTestId( 'pet-name' ), 
-        {
-            target: { value: 'Rex' }
-        }
-    );   
-    
-    fireEvent .change(
-        screen .getByTestId( 'owner-name' ), 
-        {
-            target: { value: 'Juan Carlos' }
-        }
-    );
+
+    /** Llena el formulario */
+    userEvent .type( screen .getByTestId( 'pet-name' ), 'Rex' );
+    userEvent .type( screen .getByTestId( 'owner-name' ), 'Juan Carlos' );
+    userEvent .type( screen .getByTestId( 'medical-departure-date' ), '2021-09-10' );
+    userEvent .type( screen .getByTestId( 'medical-departure-time' ), '9:30' );
+    userEvent .type( screen .getByTestId( 'symptoms' ), 'Duerme como un angelito' );
+
 
     const btnSubmit = screen .getByTestId( 'btn-submit' );
-    fireEvent .click( btnSubmit );      //  Envia un evento al elemento (Hacemos clic - Forma Anterior)
-
+    userEvent .click( btnSubmit );      //  Envia un evento al elemento (Hacemos clic - Forma Anterior)
 
 });

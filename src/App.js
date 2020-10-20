@@ -67,7 +67,7 @@ function App() {
 
   return (
     <Fragment>
-        <h1>Administrar citas</h1>
+        <h1 data-testid="app-title">Administrar citas</h1>
         <div className="container">
             <div className="row">
                 <div className="one-half column">

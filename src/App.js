@@ -76,7 +76,7 @@ function App() {
                     />
                 </div>
                 <div className="one-half column">
-                    <h3>{ title }</h3>
+                    <h3 data-testid="app-dynamic-title">{ title }</h3>
                     {   statusPendingAppointments .map( appointment => (        // Return Implicito usando Parentesis
                         <Appointment 
                             key={ appointment .id }

@@ -26,6 +26,10 @@ describe( '<App />', () => {
         expect( elTitle .tagName ) .toBe( 'H1' );               //  Verifica que la etiqueta sea H1
         expect( elTitle .textContent ) .toBe( titles[ 0 ] );    //  Verifica que el texto de en la etiqueta sea 'Administrar citas'
 
+        /** Verifica Titulo Dinámico cuando no hay citas */
+        expect( screen .getByTestId( 'app-dynamic-title' )  .textContent ) .not .toBe( 'Listado citas' );
+        expect( screen .getByTestId( 'app-dynamic-title' )  .textContent ) .toBe( 'No hay citas pendientes' );
+
     });
 
 });

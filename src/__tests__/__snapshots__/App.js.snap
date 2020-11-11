@@ -1,0 +1,124 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App /> Verificar la inserción de citas en el DOM 1`] = `
+Array [
+  <table
+    class="u-full-width"
+    data-testid="app-apointment"
+  >
+    <thead>
+      <tr>
+        <th>
+          Mascota
+        </th>
+        <th>
+          Propietario
+        </th>
+        <th>
+          Fecha - Hora
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          Rex
+        </td>
+        <td>
+          Juan Carlos
+        </td>
+        <td>
+          2021-09-10
+           - 
+          09:10
+           
+        </td>
+      </tr>
+      <tr>
+        <th
+          colspan="3"
+        >
+          Sintomatología
+        </th>
+      </tr>
+      <tr>
+        <td
+          colspan="3"
+        >
+          Duerme como un angelito
+        </td>
+      </tr>
+      <tr>
+        <td
+          colspan="3"
+        >
+          <button
+            class="u-full-width button"
+          >
+            atender ×
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>,
+  <table
+    class="u-full-width"
+    data-testid="app-apointment"
+  >
+    <thead>
+      <tr>
+        <th>
+          Mascota
+        </th>
+        <th>
+          Propietario
+        </th>
+        <th>
+          Fecha - Hora
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          Jacobo
+        </td>
+        <td>
+          Ana Maria
+        </td>
+        <td>
+          2021-09-10
+           - 
+          10:10
+           
+        </td>
+      </tr>
+      <tr>
+        <th
+          colspan="3"
+        >
+          Sintomatología
+        </th>
+      </tr>
+      <tr>
+        <td
+          colspan="3"
+        >
+          Juega y salta sin parar angelito
+        </td>
+      </tr>
+      <tr>
+        <td
+          colspan="3"
+        >
+          <button
+            class="u-full-width button"
+          >
+            atender ×
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>,
+]
+`;

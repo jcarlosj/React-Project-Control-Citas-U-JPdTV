@@ -10,7 +10,7 @@ import App from '../App';
 
 describe( '<App />', () => {
 
-    test( 'Títulos coincidentes, Dinamico \'No hay citas pendientes\' ', () => {
+    test( 'Títulos coincidentes, Título Dinámico \'No hay citas pendientes\' ', () => {
         render( <App /> );      //  Monta Componente
 
         /** Verificar que los titulos existan en en DOM */
@@ -32,7 +32,7 @@ describe( '<App />', () => {
 
     });
 
-    test( 'Cambio del título dinámico \'No hay citas pendientes\'', () => {
+    test( 'Cambia el título dinámico a \'Hay citas pendientes\'', () => {
         render( <App /> );      //  Monta Componente
 
         /** Llena el formulario */
@@ -46,6 +46,15 @@ describe( '<App />', () => {
         const btnSubmit = screen .getByTestId( 'btn-submit' );
         userEvent .click( btnSubmit );      //  Envia un evento al elemento (Hacemos clic - Forma Anterior)
 
+        /** Llena el formulario */
+        userEvent .type( screen .getByTestId( 'pet-name' ), 'Jacobo' );
+        userEvent .type( screen .getByTestId( 'owner-name' ), 'Ana Maria' );
+        userEvent .type( screen .getByTestId( 'date' ), '2021-09-10' );
+        userEvent .type( screen .getByTestId( 'hour' ), '10:10' );
+        userEvent .type( screen .getByTestId( 'symptoms' ), 'Juega y salta sin parar angelito' );
+
+        userEvent .click( btnSubmit );      //  Envia un evento al elemento (Hacemos clic - Forma Anterior)
+
         /** Alert-Error */
         expect(
             screen .queryByTestId( 'alert-error' )        //  No encuentre el elemento. Se usa queryByTestId cuando no hay certeza de encontrar el elemento y evitar el error con getByTestId
@@ -54,6 +63,17 @@ describe( '<App />', () => {
         /** Verificamos el titulo dinamico */
         expect( screen .getByTestId( 'app-dynamic-title' ) .textContent ) .toBe( 'Listado citas' );
         expect( screen .getByTestId( 'app-dynamic-title' ) .textContent ) .not .toBe( 'No hay citas pendientes' );
+    });
+
+    test( 'Verificar la inserción de citas en el DOM', async () => {
+        render( <App /> );      //  Monta Componente
+
+        const appointments = await screen .findAllByTestId( 'app-apointment' );
+
+        // console .log( appointments );   //  Promise { <pending> } si no se usa async/await
+
+        //  Snapshop: Crea un archivo con la estructura del DOM para verificar su contenido
+        expect( appointments ) .toMatchSnapshot();      //   Asegura que un valor coincida con la instantánea más reciente. (ver nuevo directorio __snapshops__ )
     });
 
 });

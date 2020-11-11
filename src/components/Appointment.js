@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Appointment = ({ appointment, deleteAppointmentAttended }) => (     // Return Implicito & Destructuración del Props pasado como argumento. Equivale a props .apointment
     <Fragment>
-        <table className="u-full-width">
+        <table data-testid="app-apointment" className="u-full-width">
             <thead>
                 <tr>
                     <th>Mascota</th>

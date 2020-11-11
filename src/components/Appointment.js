@@ -28,6 +28,7 @@ const Appointment = ({ appointment, deleteAppointmentAttended }) => (     // Ret
                         <button 
                             className="u-full-width button"
                             onClick={ () => deleteAppointmentAttended( appointment .id ) }
+                            data-testid="btn-atender"
                         >atender &times;</button>
                     </td>
                 </tr>

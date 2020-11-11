@@ -44,16 +44,7 @@ describe( '<App />', () => {
 
 
         const btnSubmit = screen .getByTestId( 'btn-submit' );
-        userEvent .click( btnSubmit );      //  Envia un evento al elemento (Hacemos clic - Forma Anterior)
-
-        /** Llena el formulario */
-        userEvent .type( screen .getByTestId( 'pet-name' ), 'Jacobo' );
-        userEvent .type( screen .getByTestId( 'owner-name' ), 'Ana Maria' );
-        userEvent .type( screen .getByTestId( 'date' ), '2021-09-10' );
-        userEvent .type( screen .getByTestId( 'hour' ), '10:10' );
-        userEvent .type( screen .getByTestId( 'symptoms' ), 'Juega y salta sin parar angelito' );
-
-        userEvent .click( btnSubmit );      //  Envia un evento al elemento (Hacemos clic - Forma Anterior)
+        userEvent .click( btnSubmit );      //  Envia un evento al elemento (Hacemos clic - Forma Anterior
 
         /** Alert-Error */
         expect(
@@ -65,7 +56,7 @@ describe( '<App />', () => {
         expect( screen .getByTestId( 'app-dynamic-title' ) .textContent ) .not .toBe( 'No hay citas pendientes' );
     });
 
-    test( 'Verificar la inserción de citas en el DOM', async () => {
+    test( 'Verificar la inserción de una cita en el DOM', async () => {
         render( <App /> );      //  Monta Componente
 
         const appointments = await screen .findAllByTestId( 'app-apointment' );
@@ -73,7 +64,13 @@ describe( '<App />', () => {
         // console .log( appointments );   //  Promise { <pending> } si no se usa async/await
 
         //  Snapshop: Crea un archivo con la estructura del DOM para verificar su contenido
-        expect( appointments ) .toMatchSnapshot();      //   Asegura que un valor coincida con la instantánea más reciente. (ver nuevo directorio __snapshops__ )
+        // expect( appointments ) .toMatchSnapshot();      //   Asegura que un valor coincida con la instantánea más reciente. (ver nuevo directorio __snapshops__ )
+
+        expect( screen .getByTestId( 'btn-atender' ) ) .toBeInTheDocument();        //  Verifica que existe el elemento
+        expect( screen .getByTestId( 'btn-atender' ) .tagName ) .toBe( 'BUTTON' );  //  Verifica que el elemento es BUTTON
+
+        // Verificar cita insertada
+        expect( screen .getByText( 'Rex' ) ).toBeInTheDocument();
     });
 
 });

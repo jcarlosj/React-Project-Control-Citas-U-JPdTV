@@ -25,7 +25,7 @@ function App() {
     */
     useEffect( () => {                      // Siempre se define con un CallBack de Arrow Function
         let appointmentsLocalStorage = JSON .parse( localStorage .getItem( 'appointments' ) );   // Retorna null si no hay una cadena registrada
-        console .log( 'Listo' );     
+        // console .log( 'Listo' );     
 
         /** Valida SI hay citas en el LocalStorage */
         if( appointmentsLocalStorage ) {
@@ -39,7 +39,7 @@ function App() {
 
     /** Agrega solicitud a citas pendientes */
     const addAppointment = ( appointment ) => {
-        console .log( 'App', appointment );
+        // console .log( 'App', appointment );
 
         /** Establece cambios en el State es decir. Asigna Cita solicitada a listado de Citas Pendientes */
         setPendingAppointments([

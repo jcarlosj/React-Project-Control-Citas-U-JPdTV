@@ -36,7 +36,7 @@ const AppointmentForm = ({ addAppointment }) => {   // Destructuración del Prop
     const submitAppointment = ( event ) => {
         event .preventDefault();        // Evita el envio por el QueryString por el metodo GET
 
-        console .debug( 'Testing', stateAppointment );
+        // console .debug( 'Testing', stateAppointment );
 
         /** Valida campos del formulario*/
         if( 
@@ -46,7 +46,7 @@ const AppointmentForm = ({ addAppointment }) => {   // Destructuración del Prop
             medicalDepartureTime .trim() === '' ||
             symptoms .trim() === ''
         ) {
-            console .error( 'Todos los campos son obligatorios.' );
+            // console .error( 'Todos los campos son obligatorios.' );
             setError( true );       // Actualiza el State: Error
             return;
         }
@@ -59,7 +59,7 @@ const AppointmentForm = ({ addAppointment }) => {   // Destructuración del Prop
          */
         stateAppointment .id = uuid()      // Agrega nueva propiedad 'id' con un valor aleatorio
         
-        console .debug( 'Testing', stateAppointment );
+        // console .debug( 'Testing', stateAppointment );
 
         /** Crea la cita */
         addAppointment( stateAppointment );

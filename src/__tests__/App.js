@@ -73,4 +73,20 @@ describe( '<App />', () => {
         expect( screen .getByText( 'Rex' ) ).toBeInTheDocument();
     });
 
+    test( 'Verifica que la cita es eliminada del DOM', () => {
+        render( <App /> );      //  Monta el componente
+
+        const btnAtender = screen .getByTestId( 'btn-atender' ); 
+
+        expect( btnAtender ) .toBeInTheDocument();        //  Verifica que existe el elemento
+        expect( btnAtender .tagName ) .toBe( 'BUTTON' );  //  Verifica que el elemento es BUTTON
+
+        userEvent .click( btnAtender );
+
+        expect( btnAtender ) .not .toBeInTheDocument();        //  Verifica que NO existe el elemento
+        expect( screen .queryByText( 'Rex' ) ) .not .toBeInTheDocument();   //  Verifica que la cita insertada no existe
+        expect( screen .queryByTestId( 'app-apointment' ) ) .not .toBeInTheDocument();      //  Verifica que el elemento del componente no existe
+
+    });
+
 });
